@@ -124,22 +124,22 @@ public class Scrabble {
 				hand = ""; //end the hand
 				break;
 			}
-			else
-			 if(!isWordInDictionary(input))
-			{
-				System.out.println("No such word in the dictionary. Try again.");//setting for a non existen word
-			}
-			else{
-			if((isWordInDictionary(input)&&(MyString.subsetOf(input,hand))))
-			{	
+			if((isWordInDictionary(input)&&(MyString.subsetOf(input,(hand)))))//valid word
+			{					
+				hand = MyString.remove(hand,input);//delete used letters
 				score = wordScore(input);
 				totalScore+=score;
-				System.out.println(input+" earned "+score+" points. Score: "+totalScore +" points");//printing how many points did he get for that play
-				hand = MyString.remove(hand,input);//delete used letters
+				System.out.println(input+" earned "+score+" points. Score: "+totalScore +" points \n");//printing how many points did he get for that play
 			}
-			if(!MyString.subsetOf(input, hand))
+
+			else
+			if(!MyString.subsetOf(input,(hand)))
 			{
 				System.out.println("Invalid word. Try again.");
+			}
+			 else if(!isWordInDictionary(input))
+			{
+				System.out.println("No such word in the dictionary. Try again.");//setting for a non existen word
 			}
 			
 			if(hand==null)
@@ -151,7 +151,7 @@ public class Scrabble {
 			{
 				score+=50;
 			}
-		}
+		
 		}
 		if (hand.isEmpty())
 		{
