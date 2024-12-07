@@ -18,11 +18,8 @@ public class MyString {
        // System.out.println(spacedString(hello));
       // System.out.println(spacedString(hello).length());
        // System.out.println(remove("committee","meet"));
-        System.out.println(contains(" o o s t z","zoo"));
-       // System.out.println(subsetOf("sap","space")); //returns true
-        //System.out.println(subsetOf("spa","space"));//returns true
-        //System.out.println(subsetOf("pass","space"));//returns false
-        //System.out.println(subsetOf("c","space"));      //returns true
+        System.out.println(subsetOf("zoo"," o o s t z"));
+        System.out.println(subsetOf("c","space"));      //returns true
     }
 
     /**
@@ -65,7 +62,7 @@ public class MyString {
                     match = false;
                     break;
                 }
-                else
+                if(str1.charAt(i + j) == str2.charAt(j))
                 {
                     count++;
                 }
@@ -89,6 +86,7 @@ public class MyString {
      *  subsetOf("sap","space") returns true
      *  subsetOf("spa","space") returns true
      *  subsetOf("pass","space") returns false
+     * subsetOf("pass","space") returns true
      *  subsetOf("c","space") returns true
      *
      * @param str1 - a string
@@ -96,23 +94,20 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2)
-    {
-        boolean isSub = false;
-        int lastIndex = (str2.length() - str1.length() + 1);
-        for(int i =0; i<lastIndex&& !isSub;i++)
-        {
-            if(str1.charAt(0)==str2.charAt(i))
+     {    
+        if (str2.length() == 0)
+        {              
+           return true;
+        }
+        for(int i = 0; i < str1.length(); i ++)
+        {  
+            if(MyString.countChar(str2, str1.charAt(i)) != MyString.countChar(str1, str1.charAt(i)))
             {
-                isSub = true;
-                for (int j = 0; j < str1.length() && isSub ; j++)
-                {
-                    isSub = (str1.charAt(j) == str2.charAt(i + j));
-                }
-
-              }
+                return false;
+            }
+        }
+        return true;
     }
-    return isSub;
-}
     
 
     /** Returns a string which is the same as the given string, with a space
@@ -168,15 +163,6 @@ public class MyString {
      * @param str2 - a string
      * @return a string consisting of str1 minus all the characters of str2
      */
-  public static String FillupString(String str1, String str2)
-  {
-    String str22 = "";
-    for(int i =0; i<str1.length()-str2.length();i++)//im gonna fill all the rest of this string with 0 so i will be able to work with them more easily
-    {
-    str22+='o';
-    }
-        return str22;
-  }
   public static String removeLastChar(String s) {
     return (s == null || s.length() == 0)
       ? null 
