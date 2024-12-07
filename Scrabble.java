@@ -128,8 +128,10 @@ public class Scrabble {
 					System.out.println("No such word in the dictionary. Try again.");
 				}
 
-			} else { // Not a subset of the hand
+			} else 
+			{ // Not a subset of the hand
 				System.out.println("Invalid word. Try again.");
+				break;
 			}
 		}
 	
