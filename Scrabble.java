@@ -121,7 +121,7 @@ public class Scrabble {
 					totalScore += score;
 					hand = MyString.remove(hand, input);
 					// Exact formatting to match the test requirement
-					System.out.println(input + " earned " + score + " points. Total score: " + totalScore + " points");
+					System.out.println(input + " earned " + score + " points. Total score: " + totalScore + " points\n");
 				} else {
 					System.out.println("Invalid word. Try again.");
 				}
