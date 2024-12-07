@@ -102,7 +102,6 @@ public class Scrabble {
     // 2. The user gets the Scrabble points of the entered word.
     // 3. The user is prompted to enter another word, or '.' to end the hand. 
 	public static void playHand(String hand) {
-		int score = 0;
 		int totalScore = 0;
 		In in = new In();
 		
@@ -118,11 +117,11 @@ public class Scrabble {
 	
 			if (MyString.subsetOf(input, hand)) {
 				if (isWordInDictionary(input)) {
-					score = wordScore(input);
+					int score = wordScore(input);
 					totalScore += score;
 					hand = MyString.remove(hand, input);
-					// Ensure the score message format matches the expected output
-					System.out.println(input + " earned " + score + " points. Total score: " + totalScore + " points\n");
+					// Exact formatting to match the test requirement
+					System.out.println(input + " earned " + score + " points. Total score: " + totalScore + " points");
 				} else {
 					System.out.println("Invalid word. Try again.");
 				}
