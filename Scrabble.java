@@ -134,7 +134,7 @@ public class Scrabble {
 			else 
 			if((!MyString.subsetOf(input, hand)))//setting for a non existent word
 			{
-				System.out.println("No such word in the dictionary. Try again.");
+				System.out.println("Invalid word. Try again.");
 			}
 			else if(!isWordInDictionary(input))//setting for a non existent word
 			{
