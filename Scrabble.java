@@ -121,31 +121,25 @@ public class Scrabble {
 			//// that completes the hand playing loop
 			if(input.equals(".")) 
 			{
-				hand = ""; //end the hand
-				break;
+				System.out.println("End of hand. Total score: " + totalScore + " points");
+            break;
 			}
-			if(isWordInDictionary(input))
+			if(!isWordInDictionary(input)&&(MyString.subsetOf(input, hand)))//setting for a non existent word
 			{
-				if(!MyString.subsetOf(input,(hand)))
-				{
-					System.out.println("Invalid word. Try again.");
-					break;
-				}
-
-				hand = MyString.remove(hand,input);//delete used letters
+				System.out.println("No such word in the dictionary. Try again.");
+				continue;
+			}
+			if (isWordInDictionary(input)&&!MyString.subsetOf(input, hand)) //in the directory but not a valid word
+			{
+				System.out.println("Invalid word. Try again.");
+				continue;
+			}
+			if(isWordInDictionary(input)&&MyString.subsetOf(input, hand))
+			{
 				score = wordScore(input);
 				totalScore+=score;
-				System.out.println(input+" earned "+score+" points. Score: "+totalScore +" points \n");//printing how many points did he get for that play
-			}
-			 else if(!isWordInDictionary(input))
-			{
-				System.out.println("No such word in the dictionary. Try again.");//setting for a non existen word
-			}
-			
-			if(hand==null)
-			{
-				System.out.println("Ran out of letters. Total score: " + totalScore + " points");
-				break;
+				hand = MyString.remove(hand,input);//delete used letters
+			System.out.println(input+" earned "+score+" points. Score: "+totalScore +" points \n");//printing how many points did he get for that play
 			}
 			if(MyString.remove(hand,input)==null)
 			{

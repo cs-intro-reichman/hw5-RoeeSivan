@@ -15,11 +15,14 @@ public class MyString {
         System.out.println(countChar(hello, 'z'));
         String str = randomStringOfLetters(9);
         System.out.println(str);*/
-        System.out.println(spacedString(hello));
-        System.out.println(spacedString(hello).length());
-        System.out.println(remove("committee","meet"));
-        System.out.println(insertRandomly('c',"roee"));
-        //// Put your other tests here.
+       // System.out.println(spacedString(hello));
+      // System.out.println(spacedString(hello).length());
+       // System.out.println(remove("committee","meet"));
+        System.out.println(contains(" o o s t z","zoo"));
+       // System.out.println(subsetOf("sap","space")); //returns true
+        //System.out.println(subsetOf("spa","space"));//returns true
+        //System.out.println(subsetOf("pass","space"));//returns false
+        //System.out.println(subsetOf("c","space"));      //returns true
     }
 
     /**
@@ -42,6 +45,44 @@ public class MyString {
         }
         return counter;
     }
+    public static boolean contains(String str1, String str2) {
+        int count=0;
+        if (str2.isEmpty())
+        {
+            return true;
+        }
+    
+        if (str2.length() > str1.length()) 
+        {
+            return false;
+        }
+    
+        for (int i = 0; i <= str1.length() - str2.length(); i++) {
+            boolean match = true;
+            for (int j = 0; j < str2.length(); j++) 
+            {
+                if (str1.charAt(i + j) != str2.charAt(j)) {
+                    match = false;
+                    break;
+                }
+                else
+                {
+                    count++;
+                }
+            }
+            if (count==str2.length()) 
+            {
+                return true; // match found
+            }
+        }
+    
+        return false; // no match found
+    }
+
+
+
+
+
 
     /** Returns true if str1 is a subset string str2, false otherwise
      *  Examples:
@@ -56,25 +97,23 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2)
     {
-         //// Replace the following statement with your code
-        int counter1 =0,counter2=0;
-        for( int i =0; i < str1.length(); i++ )
+        boolean isSub = false;
+        int lastIndex = (str2.length() - str1.length() + 1);
+        for(int i =0; i<lastIndex&& !isSub;i++)
         {
-           char c1 = str1.charAt(i);
-           counter1 = countChar(str1,c1);
-           for( int j =0; j<str2.length();j++)
-           {
-               char c2 = str2.charAt(j);
-               counter2 = countChar(str2, c2);
-               if(counter1>counter2)
-               {
-                   return false;
-               }
-           }
-        }
-       return true;
+            if(str1.charAt(0)==str2.charAt(i))
+            {
+                isSub = true;
+                for (int j = 0; j < str1.length() && isSub ; j++)
+                {
+                    isSub = (str1.charAt(j) == str2.charAt(i + j));
+                }
 
+              }
     }
+    return isSub;
+}
+    
 
     /** Returns a string which is the same as the given string, with a space
      * character inserted after each character in the given string, except
