@@ -124,18 +124,18 @@ public class Scrabble {
 				hand = ""; //end the hand
 				break;
 			}
-			if((isWordInDictionary(input)&&(MyString.subsetOf(input,(hand)))))//valid word
-			{					
+			if(isWordInDictionary(input))
+			{
+				if(!MyString.subsetOf(input,(hand)))
+				{
+					System.out.println("Invalid word. Try again.");
+					break;
+				}
+
 				hand = MyString.remove(hand,input);//delete used letters
 				score = wordScore(input);
 				totalScore+=score;
 				System.out.println(input+" earned "+score+" points. Score: "+totalScore +" points \n");//printing how many points did he get for that play
-			}
-
-			else
-			if(!MyString.subsetOf(input,(hand)))
-			{
-				System.out.println("Invalid word. Try again.");
 			}
 			 else if(!isWordInDictionary(input))
 			{
