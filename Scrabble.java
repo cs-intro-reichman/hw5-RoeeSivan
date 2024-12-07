@@ -116,16 +116,20 @@ public class Scrabble {
 			}
 	
 			if (MyString.subsetOf(input, hand)) {
-				if (isWordInDictionary(input)) {
+				if (isWordInDictionary(input)) 
+				{
 					int score = wordScore(input);
 					totalScore += score;
 					hand = MyString.remove(hand, input);
-					// Exact formatting to match the test requirement
-					System.out.println(input + " earned " + score + " points. Total score: " + totalScore + " points\n");
-				} else {
-					System.out.println("Invalid word. Try again.");
+					System.out.println(input + " earned " + score + " points. Total Score: " + totalScore + " points\n");
+				} 
+				else 
+				{
+					System.out.println("No such word in the dictionary. Try again.");
 				}
-			} else {
+			} 
+			else 
+			{
 				System.out.println("Invalid word. Try again.");
 			}
 		}
