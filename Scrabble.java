@@ -110,6 +110,7 @@ public class Scrabble {
 		In in = new In();
 		while (hand.length() > 0)
 		 {
+			
 			System.out.println("Current Hand: " + MyString.spacedString(hand));
 			System.out.println("Enter a word, or '.' to finish playing this hand:");
 			// Reads the next "token" from the keyboard. A token is defined as a string of 
@@ -118,15 +119,16 @@ public class Scrabble {
 			String input = in.readString();
 			//// Replace the following break statement with code
 			//// that completes the hand playing loop
-			if(MyString.remove(hand,input)==null)
+			if(input.equals(".")) 
 			{
-				score+=50;
+				hand = ""; //end the hand
+				break;
 			}
-
-			if(!isWordInDictionary(input))
+			else if(!isWordInDictionary(input))
 			{
 				System.out.println("No such word in the dictionary. Try again.");//setting for a non existen word
 			}
+			else{
 			if(isWordInDictionary(input))
 			{	
 				score = wordScore(input);
@@ -135,12 +137,11 @@ public class Scrabble {
 				hand = MyString.remove(hand,input);
 
 			}
-			if(input.equals("."))
+			if(MyString.remove(hand,input)==null)
 			{
-			break;
+				score+=50;
 			}
-
-
+		}
 		}
 		if (hand.length() == 0) {
 	        System.out.println("Ran out of letters. Total score: " + totalScore + " points");
