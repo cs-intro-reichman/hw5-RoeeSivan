@@ -121,24 +121,26 @@ public class Scrabble {
 			//// that completes the hand playing loop
 			if(input.equals(".")) 
 			{
-			System.out.println("End of hand. Total score: " + totalScore + " points \n");
             break;
 			}
-			if(!isWordInDictionary(input)&&(MyString.subsetOf(input, hand)))//setting for a non existent word
-			{
-				System.out.println("No such word in the dictionary. Try again.");
-			}
-			if (isWordInDictionary(input)&&!MyString.subsetOf(input, hand)) //in the directory but not a valid word
-			{
-				System.out.println("Invalid word. Try again.");
-			}
-			if(isWordInDictionary(input)&&MyString.subsetOf(input, hand))
+			if(isWordInDictionary(input)&&MyString.subsetOf(input, hand))//valid word
 			{
 				score = wordScore(input);
 				totalScore+=score;
 				hand = MyString.remove(hand,input);//delete used letters
 			System.out.println(input+" earned "+score+" points. Score: "+totalScore +" points \n");//printing how many points did he get for that play
 			}
+
+			else 
+			if((!MyString.subsetOf(input, hand)))//setting for a non existent word
+			{
+				System.out.println("No such word in the dictionary. Try again.");
+			}
+			else if(!isWordInDictionary(input))//setting for a non existent word
+			{
+				System.out.println("No such word in the dictionary. Try again.");
+			}
+			
 			if(MyString.remove(hand,input)==null)
 			{
 				score+=50;
