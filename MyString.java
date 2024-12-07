@@ -89,10 +89,9 @@ public class MyString {
         for(int i =0; i<str.length(); i++)
         {
             newString += str.charAt(i);
-            newString+=" ";
-            if(i==str.length())
+            if(i==str.length()-1)
             {
-                break;
+                newString += " ";
             }
         }
         return newString;
