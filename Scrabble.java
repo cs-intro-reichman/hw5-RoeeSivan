@@ -110,7 +110,6 @@ public class Scrabble {
 		In in = new In();
 		while (hand.length() > 0)
 		 {
-			
 			System.out.println("Current Hand: " + MyString.spacedString(hand));
 			System.out.println("Enter a word, or '.' to finish playing this hand:");
 			// Reads the next "token" from the keyboard. A token is defined as a string of 
@@ -131,12 +130,11 @@ public class Scrabble {
 			System.out.println(input+" earned "+score+" points. Score: "+totalScore +" points \n");//printing how many points did he get for that play
 			}
 
-			else 
 			if((!MyString.subsetOf(input, hand)))//setting for a non existent word
 			{
 				System.out.println("Invalid word. Try again.");
 			}
-			else if(!isWordInDictionary(input))//setting for a non existent word
+			if(!isWordInDictionary(input))//setting for a non existent word
 			{
 				System.out.println("No such word in the dictionary. Try again.");
 			}
