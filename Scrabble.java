@@ -135,7 +135,11 @@ public class Scrabble {
 				totalScore+=score;
 				System.out.println(input+" earned "+score+" points. Score: "+totalScore +" points");//printing how many points did he get for that play
 				hand = MyString.remove(hand,input);
-
+			}
+			if(hand==null)
+			{
+				System.out.println("Ran out of letters. Total score: " + totalScore + " points");
+				break;
 			}
 			if(MyString.remove(hand,input)==null)
 			{
@@ -143,11 +147,10 @@ public class Scrabble {
 			}
 		}
 		}
-		if (hand.length() == 0) {
-	        System.out.println("Ran out of letters. Total score: " + totalScore + " points");
-		} else {
+		if (hand.isEmpty())
+		{
 			System.out.println("End of hand. Total score: " + totalScore + " points");
-		}
+		} 
 	}
 
 	// Plays a Scrabble game. Prompts the user to enter 'n' for playing a new hand, or 'e'
