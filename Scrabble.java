@@ -134,13 +134,14 @@ public class Scrabble {
 					hand = MyString.remove(hand, input); // Remove used letters
 					System.out.println(input + " earned " + score + " points. Total score: " + totalScore + " points. \n");
 				} 
-				else
-				{
-					// Not a subset of the hand
-						System.out.println("Invalid word. Try again.");
-						break;
-				}
-				}
+
+			}
+			else
+			{
+				// Not a subset of the hand
+				System.out.println("Invalid word. Try again.");
+				break;
+			}
 			if(MyString.remove(hand,input)==null)
 			{
 				score+=50;
