@@ -132,7 +132,7 @@ public class Scrabble {
 					 score = wordScore(input);
 					totalScore += score;
 					hand = MyString.remove(hand, input); // Remove used letters
-					System.out.println(input + " earned " + score + " points. Total score: " + totalScore + " points. \n");
+					System.out.println(input + " earned " + score + " points. Total score: " + totalScore + " points. ");
 				} 
 
 			}
