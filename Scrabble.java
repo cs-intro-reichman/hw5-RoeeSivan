@@ -102,54 +102,35 @@ public class Scrabble {
     // 2. The user gets the Scrabble points of the entered word.
     // 3. The user is prompted to enter another word, or '.' to end the hand. 
 	public static void playHand(String hand) {
-		int n = hand.length();
-		int score = 0;
 		int totalScore = 0;
-		// Declares the variable in to refer to an object of type In, and initializes it to represent
-		// the stream of characters coming from the keyboard. Used for reading the user's inputs.   
 		In in = new In();
-		while (hand.length() > 0)
-		 {
+	
+		while (!hand.isEmpty()) {
 			System.out.println("Current Hand: " + MyString.spacedString(hand));
 			System.out.println("Enter a word, or '.' to finish playing this hand:");
-			// Reads the next "token" from the keyboard. A token is defined as a string of 
-			// non-whitespace characters. Whitespace is either space characters, or  
-			// end-of-line characters.
+	
 			String input = in.readString();
-			//// Replace the following break statement with code
-			//// that completes the hand playing loop
-			if(input.equals(".")) 
-			{
-            break;
+			if (input.equals(".")) {
+				break;
 			}
-			if(isWordInDictionary(input)&&MyString.subsetOf(input, hand))//valid word
-			{
-				score = wordScore(input);
-				totalScore+=score;
-				hand = MyString.remove(hand,input);//delete used letters
-			System.out.println(input+" earned "+score+" points. Score: "+totalScore +" points \n");//printing how many points did he get for that play
-			}
-
-			if((!MyString.subsetOf(input, hand)))//setting for a non existent word
-			{
+	
+			if (MyString.subsetOf(input, hand)) {
+				if (isWordInDictionary(input)) { // Valid word
+					int score = wordScore(input);
+					totalScore += score;
+					hand = MyString.remove(hand, input); // Remove used letters
+					System.out.println(input + " earned " + score + " points. Total score: " + totalScore + " points.");
+				} else { // Not in the dictionary
+					System.out.println("No such word in the dictionary. Try again.");
+				}
+			} else { // Not a subset of the hand
 				System.out.println("Invalid word. Try again.");
 			}
-			if(!isWordInDictionary(input))//setting for a non existent word
-			{
-				System.out.println("No such word in the dictionary. Try again.");
-			}
-			
-			if(MyString.remove(hand,input)==null)
-			{
-				score+=50;
-			}
-		
 		}
-		if (hand.isEmpty())
-		{
-			System.out.println("End of hand. Total score: " + totalScore + " points");
-		} 
+	
+		System.out.println("End of hand. Total score: " + totalScore + " points.");
 	}
+	
 
 	// Plays a Scrabble game. Prompts the user to enter 'n' for playing a new hand, or 'e'
 	// to end the game. If the user enters any other input, writes an error message.
