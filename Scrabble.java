@@ -105,7 +105,7 @@ public class Scrabble {
 		int score = 0;
 		int totalScore = 0;
 		In in = new In();
-		
+	
 		while (hand.length() > 0) {
 			System.out.println("Current Hand: " + MyString.spacedString(hand));
 			System.out.println("Enter a word, or '.' to finish playing this hand:");
@@ -121,20 +121,28 @@ public class Scrabble {
 					score = wordScore(input);
 					totalScore += score;
 					hand = MyString.remove(hand, input);
-					// Ensure the score message format matches the expected output
-					System.out.println(input + " earned " + score + " points. Total score: " + totalScore + " points.");
+	
+					// Adjust score message formatting to match the test exactly
+					System.out.println(input + " earned " + score + " points. Score: " + totalScore + " points");
+	
+					if (hand.isEmpty()) {
+						System.out.println("End of hand. Total score: " + totalScore + " points");
+					}
 				} else {
+					// Invalid word from dictionary
 					System.out.println("Invalid word. Try again.");
 				}
 			} else {
+				// Word not a subset of hand
 				System.out.println("Invalid word. Try again.");
 			}
 		}
 	
-		if (hand.isEmpty()) {
+		if (hand.length() > 0) {
 			System.out.println("End of hand. Total score: " + totalScore + " points");
 		}
 	}
+	
 	
 
 	// Plays a Scrabble game. Prompts the user to enter 'n' for playing a new hand, or 'e'
