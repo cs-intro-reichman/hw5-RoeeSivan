@@ -105,7 +105,8 @@ public class Scrabble {
 		int totalScore = 0;
 		In in = new In();
 	
-		while (!hand.isEmpty()) {
+		while (!hand.isEmpty()) 
+		{
 			System.out.println("Current Hand: " + MyString.spacedString(hand));
 			System.out.println("Enter a word, or '.' to finish playing this hand:");
 	
@@ -114,21 +115,25 @@ public class Scrabble {
 				break;
 			}
 	
-			if (MyString.subsetOf(input, hand)) {
+			if (MyString.subsetOf(input, hand))
+			 {
 				if (isWordInDictionary(input)) { // Valid word
 					int score = wordScore(input);
 					totalScore += score;
 					hand = MyString.remove(hand, input); // Remove used letters
-					System.out.println(input + " earned " + score + " points. Total score: " + totalScore + " points.");
-				} else { // Not in the dictionary
+					System.out.println(input + " earned " + score + " points. Total score: " + totalScore + " points. \n");
+				} 
+				else
+				{ // Not in the dictionary
 					System.out.println("No such word in the dictionary. Try again.");
 				}
+
 			} else { // Not a subset of the hand
 				System.out.println("Invalid word. Try again.");
 			}
 		}
 	
-		System.out.println("End of hand. Total score: " + totalScore + " points.");
+		System.out.println("End of hand. Total score: " + totalScore + " points. \n");
 	}
 	
 
