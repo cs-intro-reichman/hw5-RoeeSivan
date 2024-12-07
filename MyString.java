@@ -13,9 +13,10 @@ public class MyString {
       /*  System.out.println(countChar(hello, 'h'));
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'z'));
-        System.out.println(spacedString(hello));
         String str = randomStringOfLetters(9);
         System.out.println(str);*/
+        System.out.println(spacedString(hello));
+        System.out.println(spacedString(hello).length());
         System.out.println(remove("committee","meet"));
         System.out.println(insertRandomly('c',"roee"));
         //// Put your other tests here.
@@ -89,7 +90,7 @@ public class MyString {
         for(int i =0; i<str.length(); i++)
         {
             newString += str.charAt(i);
-            if(i==str.length()-1)
+            if(i<str.length()-1)
             {
                 newString += " ";
             }
